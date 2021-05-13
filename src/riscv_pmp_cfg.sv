@@ -261,7 +261,7 @@ class riscv_pmp_cfg extends uvm_object;
     int pmp_id;
     foreach (pmp_cfg[i]) begin
       // TODO(udinator) condense this calculations if possible
-      pmp_id = i / cfg_per_csr;
+      pmp_id = (XLEN/32) * (i / cfg_per_csr);
       if (i == 0) begin
         cfg_byte = {1'b0, pmp_cfg[i].zero, TOR, 1'b1, 1'b1, 1'b1};
       end else begin
